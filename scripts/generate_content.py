@@ -70,6 +70,21 @@ def scan_resumes() -> list:
     return resumes
 
 
+def update_index_html(content: dict) -> None:
+    index_path = ROOT / "index.html"
+    html = index_path.read_text(encoding="utf-8")
+    start = "<!-- SITE_CONTENT_START -->"
+    end = "<!-- SITE_CONTENT_END -->"
+    inline = (
+        f'{start}\n'
+        f'    <script>window.SITE_CONTENT = {json.dumps(content, ensure_ascii=False)};</script>\n'
+        f'    {end}'
+    )
+    start_idx = html.index(start)
+    end_idx = html.index(end) + len(end)
+    index_path.write_text(html[:start_idx] + inline + html[end_idx:], encoding="utf-8")
+
+
 def main():
     content = {
         "profile": scan_profile(),
@@ -78,14 +93,12 @@ def main():
         "resumes": scan_resumes()
     }
 
-    json_out = ROOT / "content.json"
+    json_out = ROOT / "site-data.json"
     json_out.write_text(json.dumps(content, indent=2, ensure_ascii=False) + "\n")
 
-    js_out = ROOT / "content.js"
-    js_content = "window.SITE_CONTENT = " + json.dumps(content, indent=2, ensure_ascii=False) + ";\n"
-    js_out.write_text(js_content)
+    update_index_html(content)
 
-    print(f"Wrote {json_out} and {js_out}")
+    print(f"Wrote {json_out} and updated index.html")
 
 
 if __name__ == "__main__":

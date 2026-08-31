@@ -259,6 +259,17 @@ const projectData = {
 
 let lifeGalleries = {};
 
+function resolveAssetPath(path) {
+    if (typeof window.assetUrl === 'function') {
+        return window.assetUrl(path);
+    }
+    return path;
+}
+
+function resolveAssetPaths(paths) {
+    return (paths || []).map(resolveAssetPath);
+}
+
 async function loadSiteContent() {
     if (window.SITE_CONTENT) {
         initContentFromManifest(window.SITE_CONTENT);
@@ -266,8 +277,8 @@ async function loadSiteContent() {
     }
 
     try {
-        const response = await fetch('content.json');
-        if (!response.ok) throw new Error('Failed to load content.json');
+        const response = await fetch(resolveAssetPath('site-data.json'));
+        if (!response.ok) throw new Error('Failed to load site-data.json');
         initContentFromManifest(await response.json());
     } catch (err) {
         console.error('Could not load site content:', err);
@@ -278,20 +289,27 @@ function initContentFromManifest(content) {
     lifeGalleries = {
         kitty: {
             title: '😼 Not a normal cat',
-            images: content.cat?.images || []
+            images: resolveAssetPaths(content.cat && content.cat.images)
         },
         myworld: {
             title: '🌟 Welcome to My World',
-            images: content.life?.images || []
+            images: resolveAssetPaths(content.life && content.life.images)
         }
     };
 
     const catCover = document.getElementById('cat-cover');
     const lifeCover = document.getElementById('life-cover');
     const profileAvatar = document.getElementById('profile-avatar');
-    if (catCover && content.cat?.cover) catCover.src = content.cat.cover;
-    if (lifeCover && content.life?.cover) lifeCover.src = content.life.cover;
-    if (profileAvatar && content.profile) profileAvatar.src = content.profile;
+    if (catCover && content.cat && content.cat.cover) catCover.src = resolveAssetPath(content.cat.cover);
+    if (lifeCover && content.life && content.life.cover) lifeCover.src = resolveAssetPath(content.life.cover);
+    if (profileAvatar && content.profile) profileAvatar.src = resolveAssetPath(content.profile);
+
+    document.querySelectorAll('.project-card-cover img, .project-card img').forEach((img) => {
+        const src = img.getAttribute('src');
+        if (src && !/^https?:\/\//i.test(src)) {
+            img.src = resolveAssetPath(src);
+        }
+    });
 
     renderResumeLinks(content.resumes || []);
 }
@@ -302,7 +320,7 @@ function renderResumeLinks(resumes) {
 
     if (sidebar) {
         sidebar.innerHTML = resumes.map((resume, index) => `
-            <a href="${resume.path}" class="resume-link" target="_blank"${index > 0 ? ' style="margin-top: 0.8rem;"' : ''}>
+            <a href="${resolveAssetPath(resume.path)}" class="resume-link" target="_blank"${index > 0 ? ' style="margin-top: 0.8rem;"' : ''}>
                 <i class="fas fa-file-pdf"></i>
                 <span>${resume.name}</span>
             </a>
@@ -311,7 +329,7 @@ function renderResumeLinks(resumes) {
 
     if (modal) {
         modal.innerHTML = resumes.map(resume => `
-            <a href="${resume.path}" target="_blank" class="resume-modal-link" onclick="closeResumeModal()">
+            <a href="${resolveAssetPath(resume.path)}" target="_blank" class="resume-modal-link" onclick="closeResumeModal()">
                 <div style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: linear-gradient(135deg, #4dd0e1, #0277bd); border-radius: 12px; text-decoration: none; color: white; transition: all 0.3s ease;">
                     <i class="fas fa-file-pdf" style="font-size: 2rem;"></i>
                     <div style="flex: 1;">
