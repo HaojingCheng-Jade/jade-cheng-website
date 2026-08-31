@@ -257,35 +257,72 @@ const projectData = {
     }
 };
 
-const lifeGalleries = {
-    'myworld': {
-        title: '🌟 Welcome to My World',
-        images: [
-            'life_pic/058763abcf2287d735dc4900553a5a89.jpg',
-            'life_pic/090c2dab7f62df87507b035728d503fb.jpg',
-            'life_pic/09d7d209e7f78963c8c9b7b278e1b72a.jpg',
-            'life_pic/34c52b76426f3e29eeb381d216eec6dc.jpg',
-            'life_pic/52321efccef4ac750555810de11c189d.jpg',
-            'life_pic/5f0691a5a7f883d43643a8dcc78eab80.jpg',
-            'life_pic/6154c08b1b2db436b5891074cf7ec9d0.jpg',
-            'life_pic/7d74835471d06bd1da3a7cfb7880fa0e.jpg',
-            'life_pic/821347e3c88c727e4b2e3c689270b723.jpg',
-            'life_pic/9e9ec0a3f9d7bba89206e7127aec3966.jpg',
-            'life_pic/d702fef82b8b7590fa5c45c12303c5d3.jpg',
-            'life_pic/e1c80bd5f642211286c1d337041857c7.jpg',
-            'life_pic/e72763bd6738f8eb5d17a3d9539cb8ba.jpg'
-        ]
-    },
-    'kitty': {
-        title: '😼 Not a normal cat',
-        images: [
-            'offer/1b369c835361f86c6021d098e5e1c6fe.jpg',
-            'offer/4ed49fe0b2bdec35b534051cec489de8.jpg',
-            'offer/5e63b734d622ed05b1eea373d27b0e52.jpg',
-            'offer/5f3f471e6badf5b2d44cbebea0c9dea7.jpg'
-        ]
+let lifeGalleries = {};
+
+async function loadSiteContent() {
+    if (window.SITE_CONTENT) {
+        initContentFromManifest(window.SITE_CONTENT);
+        return;
     }
-};
+
+    try {
+        const response = await fetch('content.json');
+        if (!response.ok) throw new Error('Failed to load content.json');
+        initContentFromManifest(await response.json());
+    } catch (err) {
+        console.error('Could not load site content:', err);
+    }
+}
+
+function initContentFromManifest(content) {
+    lifeGalleries = {
+        kitty: {
+            title: '😼 Not a normal cat',
+            images: content.cat?.images || []
+        },
+        myworld: {
+            title: '🌟 Welcome to My World',
+            images: content.life?.images || []
+        }
+    };
+
+    const catCover = document.getElementById('cat-cover');
+    const lifeCover = document.getElementById('life-cover');
+    const profileAvatar = document.getElementById('profile-avatar');
+    if (catCover && content.cat?.cover) catCover.src = content.cat.cover;
+    if (lifeCover && content.life?.cover) lifeCover.src = content.life.cover;
+    if (profileAvatar && content.profile) profileAvatar.src = content.profile;
+
+    renderResumeLinks(content.resumes || []);
+}
+
+function renderResumeLinks(resumes) {
+    const sidebar = document.getElementById('resume-list');
+    const modal = document.getElementById('resume-modal-list');
+
+    if (sidebar) {
+        sidebar.innerHTML = resumes.map((resume, index) => `
+            <a href="${resume.path}" class="resume-link" target="_blank"${index > 0 ? ' style="margin-top: 0.8rem;"' : ''}>
+                <i class="fas fa-file-pdf"></i>
+                <span>${resume.name}</span>
+            </a>
+        `).join('');
+    }
+
+    if (modal) {
+        modal.innerHTML = resumes.map(resume => `
+            <a href="${resume.path}" target="_blank" class="resume-modal-link" onclick="closeResumeModal()">
+                <div style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: linear-gradient(135deg, #4dd0e1, #0277bd); border-radius: 12px; text-decoration: none; color: white; transition: all 0.3s ease;">
+                    <i class="fas fa-file-pdf" style="font-size: 2rem;"></i>
+                    <div style="flex: 1;">
+                        <h3 style="margin: 0; font-size: 1.3rem;">${resume.name}</h3>
+                    </div>
+                    <i class="fas fa-external-link-alt" style="font-size: 1.2rem;"></i>
+                </div>
+            </a>
+        `).join('');
+    }
+}
 
 function openProjectModal(projectId) {
     const modal = document.getElementById('projectModal');
@@ -353,7 +390,7 @@ const projectDetails = {
     'mobile-behavior': {
         title: '📊 Mobile User Behavior Data Analysis and Visualization Project',
         subtitle: 'Company: China Mobile<br>Time: June 2024 - Aug 2024',
-        coverImage: 'mobile_user_behavior_dashboard.png',
+        coverImage: 'mobileuser/Mobile User Behavior Deep Insights.png',
         overview: 'An enterprise-level big data project completed at China Mobile Information Technology Center, building a comprehensive mobile user behavior data analysis platform. The two-week project processed massive user behavior data, achieving complete transformation from raw data to business insights through an end-to-end data pipeline.',
         technologies: ['Big Data', 'Python', 'SQL', 'Data Visualization', 'Hadoop', 'Spark'],
         techStack: {
@@ -1179,7 +1216,9 @@ function closeLifeGallery() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadSiteContent();
+
     const galleryTriggers = document.querySelectorAll('.kitty-info.kitty-gallery-trigger');
     galleryTriggers.forEach(trigger => {
         trigger.addEventListener('click', () => {

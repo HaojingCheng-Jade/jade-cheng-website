@@ -47,13 +47,15 @@ git push -u origin main
    - 项目详情
    - 联系方式链接
 
-2. **简历文件**: 
-   - 将PDF简历文件放在项目根目录
-   - 更新简历链接指向实际文件
+2. **简历、照片**: 见 `RESUME_SETUP.md`
+   - 头像放入 `profile/` 文件夹（命名为 `avatar.jpg`）
+   - 简历放入 `resume/` 文件夹
+   - 猫咪照片放入 `cat/` 文件夹
+   - 生活照片放入 `life/` 文件夹
+   - 推送后自动更新，本地可运行 `python3 scripts/generate_content.py`
 
 3. **社交媒体链接**: 
-   - 更新LinkedIn、GitHub、LeetCode等链接
-   - 添加真实的Udemy课程链接
+   - 更新 LinkedIn、GitHub、LeetCode 等链接
 
 4. **教育经历**: 
    - 更新真实的学校和专业信息

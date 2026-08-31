@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jade Cheng - Data Scientist</title>
+    <title>Jade Cheng - Data Science & Data Engineering</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -54,24 +54,17 @@
             </div>
             <div class="profile-section">
                 <div class="profile-image">
-                    <img src="IMG_1911.jpg" alt="Jade Cheng" />
+                    <img id="profile-avatar" src="profile/avatar.jpg" alt="Jade Cheng" />
                 </div>
                 <h1 class="profile-name">Jade Cheng</h1>
-                <p class="profile-title">Data Scientist | Duke Statistics</p>
-                <p class="profile-description">Focused on solving real-world problems through data-driven solutions😼</p>
+                <p class="profile-title">Data Science & Data Engineering | Duke Statistics</p>
+                <p class="profile-description">Building pipelines, models, and dashboards that teams actually use</p>
             </div>
 
-            <!-- 简历下载 -->
+            <!-- 简历下载（自动读取 resume/ 文件夹） -->
             <div class="resume-section">
                 <h3>My Resume</h3>
-                <a href="resume/Jade_Resume_DS.pdf" class="resume-link" target="_blank">
-                    <i class="fas fa-file-pdf"></i>
-                    <span>Jade_Resume_DS.pdf</span>
-                </a>
-                <a href="resume/Jade_Resume_DA.pdf" class="resume-link" target="_blank" style="margin-top: 0.8rem;">
-                    <i class="fas fa-file-pdf"></i>
-                    <span>Jade_Resume_DA.pdf</span>
-                </a>
+                <div id="resume-list"></div>
             </div>
 
             <!-- 联系方式 -->
@@ -83,7 +76,7 @@
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <span>haojing.cheng2025@gmail.com</span>
+                    <span>jadecheng2027@gmail.com</span>
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-instagram"></i>
@@ -134,7 +127,7 @@
             <section class="internship-banner">
                 <a href="#" class="banner-link" onclick="openResumeModal(); return false;">
                     <div class="banner-content">
-                        <h2 class="banner-title">Seeking Summer '26 DS DA Internship!🙋🏻‍♀️</h2>
+                        <h2 class="banner-title">Open to Full-Time DS & DE Roles in 2027 🙋🏻‍♀️</h2>
                     </div>
                 </a>
             </section>
@@ -143,40 +136,49 @@
             <section class="about-section">
                 <h2 class="section-title">About Me 😃</h2>
                 <div class="about-content">
-                    <p style="font-size: 1.1rem; color: #2c3e50; margin-bottom: 2rem; text-align: center; font-weight: 500;">Hi, this is Jade！I am a first-year Master's student in Statistical Science at Duke University, with an expected graduation date of <strong>May 2027</strong>.</p>
+                    <p style="font-size: 1.1rem; color: #2c3e50; margin-bottom: 2rem; text-align: center; font-weight: 500;">Hi, I'm Jade — a second-year Master's student in Statistical Science at Duke, graduating in <strong>May 2027</strong>. I'm looking for full-time Data Science or Data Engineering roles where I can own problems end to end: from messy raw data to models, pipelines, and dashboards that help people make real decisions.</p>
                     <h3 class="about-subtitle">When a Netflix Show Sparked a Career Path</h3>
-                    <p>My data science journey started with an unexpected mentor: the TV series <strong>House of Cards</strong>. I was captivated when I discovered how Netflix used millions of user interactions—from pauses and searches to ratings—to shape everything from casting choices to plot direction. It was my "aha!" moment: raw data could tell compelling stories and drive powerful business strategies.</p>
+                    <p>My path into data started with an unexpected source: <strong>House of Cards</strong>. Learning how Netflix used viewing behavior — pauses, searches, ratings — to shape casting and storylines was the moment it clicked for me. Data wasn't just numbers on a screen; it was how companies understood people and made better calls.</p>
                     
-                    <p>That revelation led me to pursue a Bachelor's degree in Data Science at Communication University of China, where I learned that data science isn't just about algorithms—it's about finding the story hidden in the numbers.</p>
+                    <p>That curiosity led me to a Bachelor's in Data Science at Communication University of China. Since then, I've gravitated toward work that sits at the intersection of analytics and engineering — building the pipelines that make analysis possible, then turning the results into something stakeholders can actually use.</p>
                     
-                    <h3 class="about-subtitle">Building Skills That Turn Data into Decisions</h3>
-                    <p>I believe the best way to learn is by doing. That's why I'm always getting my hands dirty with data:</p>
+                    <h3 class="about-subtitle">What I've Been Working On</h3>
+                    <p>Most of my experience falls into two buckets: building data infrastructure, and using that data to answer business questions. A few highlights:</p>
                     
                     <div class="internship-box" style="margin-bottom: 1.5rem; padding: 1.25rem 1.5rem; border: 1px solid #e0f2f1; border-radius: 10px; background: #f8fdfe;">
-                        <h4 style="color: #0277bd; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">User Behavior Analytics (Tourism Planning) for China Mobile</h4>
-                        <p style="color: #4dd0e1; font-size: 0.95rem; margin-bottom: 0.3rem; font-weight: 500;">Jun 2024 – Aug 2024 | Data Analyst Intern | Beijing, China</p>
+                        <h4 style="color: #0277bd; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">Lenovo — Price Sensitivity Analysis</h4>
+                        <p style="color: #4dd0e1; font-size: 0.95rem; margin-bottom: 0.3rem; font-weight: 500;">Jul 2026 – Present | Data Scientist | Morrisville, NC</p>
                         <ul class="about-list" style="margin-top: 0.8rem;">
-                            <li>Conducted an <strong>end-to-end ETL pipeline</strong> and analytics workflow using <strong>SQL on Spark/Hadoop</strong> to derive user behavior metrics.</li>
-                            <li>Computed <strong>DAU/MAU</strong>, visitor volume, travel frequency, and scenic spot rankings through data cleaning and EDA, supporting user segmentation and trend identification.</li>
-                            <li>Built <strong>Power BI</strong> dashboards to deliver actionable insights on holiday travel trends and user profiles, enabling tourism planning and targeted marketing decisions.</li>
+                            <li>Built an end-to-end <strong>ETL pipeline</strong> to clean and integrate 4 years of pricing, sales, revenue, and product data for price sensitivity modeling.</li>
+                            <li>Developed an <strong>ML pricing system</strong> to forecast units sold, revenue, and margin under different pricing scenarios.</li>
+                            <li>Deployed backend prediction services and interactive dashboards on <strong>AWS (S3, Athena)</strong> so business users can compare scenarios and understand key drivers.</li>
+                        </ul>
+                    </div>
+
+                    <div class="internship-box" style="margin-bottom: 1.5rem; padding: 1.25rem 1.5rem; border: 1px solid #e0f2f1; border-radius: 10px; background: #f8fdfe;">
+                        <h4 style="color: #0277bd; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">Cormetech — Manufacturing Data Engineering</h4>
+                        <p style="color: #4dd0e1; font-size: 0.95rem; margin-bottom: 0.3rem; font-weight: 500;">May 2026 – Present | Data Engineer Intern | Durham, NC</p>
+                        <ul class="about-list" style="margin-top: 0.8rem;">
+                            <li>Built automated <strong>ETL pipelines</strong> with Python, <strong>SQL Server</strong>, and <strong>Airflow</strong> to move production data into standardized tables for reporting.</li>
+                            <li>Encoded machine operating logic to flag running, downtime, changeover, and abnormal modes — enabling production metrics and anomaly analysis.</li>
+                            <li>Developed interactive HTML dashboards per production step; migrated <strong>500+</strong> production order records with redesigned table schemas and relationships.</li>
                         </ul>
                     </div>
 
                     <div class="internship-box" style="margin-bottom: 2rem; padding: 1.25rem 1.5rem; border: 1px solid #e0f2f1; border-radius: 10px; background: #f8fdfe;">
-                        <h4 style="color: #0277bd; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">Software Center of the Industrial and Commercial Bank of China</h4>
+                        <h4 style="color: #0277bd; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">Industrial and Commercial Bank of China (ICBC)</h4>
                         <p style="color: #4dd0e1; font-size: 0.95rem; margin-bottom: 0.3rem; font-weight: 500;">Jun 2023 – Aug 2023 | Data Analyst Intern | Beijing, China</p>
                         <ul class="about-list" style="margin-top: 0.8rem;">
-                            <li>Analyzed <strong>12 months</strong> of customer activation, transaction, and app-binding data using <strong>SQL</strong>, identifying behavior patterns among users aged <strong>18–22</strong> and a <strong>130%+</strong> increase in new card activations during the back-to-school season.</li>
-                            <li>Performed data cleaning, segmentation, and exploratory data analysis (EDA) across JD.com and Meituan, revealing major platform adoption gaps (<strong>70%+</strong> unbound users) that informed marketing focus.</li>
-                            <li>Built <strong>Power BI</strong> dashboards to track activation funnels, conversion rates, and channel performance, enabling stakeholders to monitor key metrics through self-service reporting.</li>
-                            <li>Designed and evaluated <strong>A/B tests</strong> to optimize channel selection and push timing, collaborating cross-functionally to drive an <strong>18%</strong> improvement in overall conversion performance.</li>
+                            <li>Queried customer activation, transaction, and app-binding data with <strong>SQL</strong>; used <strong>Python</strong> to analyze back-to-school demand across card activation and digital channels.</li>
+                            <li>Built <strong>Power BI</strong> dashboards for activation funnels, conversion rates, and channel performance — giving stakeholders a self-serve view of digital adoption trends.</li>
+                            <li>Designed <strong>A/B tests</strong> for email, SMS, and in-app campaigns, contributing to a <strong>5.8%</strong> lift in card-binding conversion rate.</li>
                         </ul>
                     </div>
                     
-                    <p>Now, as a first-year Master's student in Statistical Science at Duke University, I'm expanding my toolkit with <strong>Python</strong> (<strong>NumPy</strong>, <strong>Pandas</strong>, <strong>Scikit-learn</strong>), <strong>SQL</strong>, <strong>A/B Testing</strong>, <strong>Machine Learning</strong>, and <strong>LLM APIs</strong>—all while keeping my eyes on the prize: making data work in the real world.</p>
+                    <p>Across these roles, my toolkit has grown to include <strong>Python</strong> (Pandas, NumPy, scikit-learn), <strong>SQL</strong>, <strong>Airflow</strong>, <strong>AWS</strong>, <strong>statistical modeling</strong>, <strong>A/B testing</strong>, and <strong>LLM APIs</strong> — but what matters more to me is knowing when to use each one, and making sure the output lands with the people who need it.</p>
                     
-                    <h3 class="about-subtitle">Let's Build Something Meaningful Together!!!😆</h3>
-                    <p><strong style="color: #0277bd;">I'm excited to find a Summer 2026 internship where I can contribute my skills, learn from experienced mentors, and help turn complex data into clear, actionable insights.</strong> Because at the end of the day, it's not just about the models we build—it's about the impact they create.</p>
+                    <h3 class="about-subtitle">Let's Connect</h3>
+                    <p><strong style="color: #0277bd;">I'm actively looking for full-time Data Science or Data Engineering roles starting in 2027.</strong> If your team cares about reliable data foundations and analysis that drives decisions — not just models sitting in a notebook — I'd love to hear from you.</p>
                 </div>
             </section>
 
@@ -191,8 +193,8 @@
                         </div>
                         <div class="project-info">
                             <h3>Mobile User Behavior Analysis</h3>
-                            <p>Big Data Platform Development</p>
-                            <span class="project-tech">Big Data • SQL • Visualization</span>
+                            <p>Big Data ETL & Analytics Platform</p>
+                            <span class="project-tech">ETL • Spark • SQL • Power BI</span>
                         </div>
                     </div>
 
@@ -203,8 +205,8 @@
                         </div>
                         <div class="project-info">
                             <h3>Neural News Recommendation System with LLM Explanation</h3>
-                            <p>AI-Powered Content Recommendation</p>
-                            <span class="project-tech">LLM • Machine Learning • Python • Vue • Flask</span>
+                            <p>ML Ranking & Explainable Recommendations</p>
+                            <span class="project-tech">Python • scikit-learn • LLM API • Flask</span>
                         </div>
                     </div>
 
@@ -215,8 +217,8 @@
                         </div>
                         <div class="project-info">
                             <h3>Cloud-Based Video Games Sales Analytics Dashboard</h3>
-                            <p>AWS S3 → Athena → Power BI End-to-End Data Analytics</p>
-                            <span class="project-tech">AWS S3 • Amazon Athena • Power BI • SQL • Data Analytics</span>
+                            <p>AWS Cloud Data Pipeline & BI Dashboard</p>
+                            <span class="project-tech">AWS S3 • Athena • SQL • Power BI</span>
                         </div>
                     </div>
                 </div>
@@ -227,24 +229,44 @@
                 <h2 class="section-title">My Toolkit🛠️</h2>
                 <div class="skills-grid">
                     <div class="skill-category skill-category-language">
-                        <h3>Language</h3>
+                        <h3>Languages</h3>
                         <div class="skill-tags">
                             <span class="skill-tag skill-tag-language">Python</span>
                             <span class="skill-tag skill-tag-language">SQL</span>
                             <span class="skill-tag skill-tag-language">R</span>
                         </div>
                     </div>
-                    <div class="skill-category skill-category-ml">
-                        <h3>Machine Learning</h3>
+                    <div class="skill-category skill-category-library">
+                        <h3>Data Engineering</h3>
                         <div class="skill-tags">
-                            <span class="skill-tag skill-tag-ml">TensorFlow</span>
-                            <span class="skill-tag skill-tag-ml">PyTorch</span>
-                            <span class="skill-tag skill-tag-ml">Scikit-learn</span>
-                            <span class="skill-tag skill-tag-ml">Keras</span>
+                            <span class="skill-tag skill-tag-library">ETL Pipelines</span>
+                            <span class="skill-tag skill-tag-library">Airflow</span>
+                            <span class="skill-tag skill-tag-library">AWS S3</span>
+                            <span class="skill-tag skill-tag-library">Athena</span>
+                            <span class="skill-tag skill-tag-library">SQL Server</span>
+                            <span class="skill-tag skill-tag-library">Git</span>
+                        </div>
+                    </div>
+                    <div class="skill-category skill-category-ml">
+                        <h3>Analytics & ML</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag skill-tag-ml">scikit-learn</span>
+                            <span class="skill-tag skill-tag-ml">Statistical Modeling</span>
+                            <span class="skill-tag skill-tag-ml">A/B Testing</span>
+                            <span class="skill-tag skill-tag-ml">EDA</span>
+                            <span class="skill-tag skill-tag-ml">Time-Series</span>
+                        </div>
+                    </div>
+                    <div class="skill-category skill-category-viz">
+                        <h3>Visualization</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag skill-tag-viz">Power BI</span>
+                            <span class="skill-tag skill-tag-viz">Tableau</span>
+                            <span class="skill-tag skill-tag-viz">HTML Dashboards</span>
                         </div>
                     </div>
                     <div class="skill-category skill-category-library">
-                        <h3>Library</h3>
+                        <h3>Libraries</h3>
                         <div class="skill-tags">
                             <span class="skill-tag skill-tag-library">Pandas</span>
                             <span class="skill-tag skill-tag-library">NumPy</span>
@@ -252,48 +274,13 @@
                             <span class="skill-tag skill-tag-library">Seaborn</span>
                         </div>
                     </div>
-                    <div class="skill-category skill-category-viz">
-                        <h3>Data Visualization</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag skill-tag-viz">Power BI</span>
-                            <span class="skill-tag skill-tag-viz">Tableau</span>
-                        </div>
-                    </div>
                     <div class="skill-category skill-category-llm">
                         <h3>LLM</h3>
                         <div class="skill-tags">
-                            <span class="skill-tag skill-tag-llm">Prompt</span>
-                            <span class="skill-tag skill-tag-llm">API</span>
+                            <span class="skill-tag skill-tag-llm">Prompt Engineering</span>
+                            <span class="skill-tag skill-tag-llm">API Integration</span>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <!-- Deep Dive 学习模块 -->
-            <section class="deepdive-section">
-                <h2 class="section-title">Deep Dive 😎(Online Courses)</h2>
-                <div class="course-links">
-                    <a href="https://www.udacity.com/enrollment/ud257" target="_blank" class="course-link course-link-abtest">
-                        <span class="course-icon">🧪</span>
-                        <div class="course-info">
-                            <span class="course-title">A/B Testing</span>
-                            <span class="course-platform">Udacity</span>
-                        </div>
-                    </a>
-                    <a href="https://www.udacity.com/enrollment/ud170" target="_blank" class="course-link course-link-pandas">
-                        <span class="course-icon">🐼</span>
-                        <div class="course-info">
-                            <span class="course-title">NumPy & Pandas</span>
-                            <span class="course-platform">Udacity</span>
-                        </div>
-                    </a>
-                    <a href="https://www.udemy.com/course/python-for-data-science-and-machine-learning-bootcamp/" target="_blank" class="course-link course-link-ml">
-                        <span class="course-icon">🤖</span>
-                        <div class="course-info">
-                            <span class="course-title">Machine Learning</span>
-                            <span class="course-platform">Udemy</span>
-                        </div>
-                    </a>
                 </div>
             </section>
 
@@ -303,7 +290,7 @@
                 <div class="kitty-modules">
                     <div class="kitty-module kitty-module-1">
                         <div class="kitty-photo">
-                            <img src="offer/kitty_1.JPG" alt="OFFER the Kitty" />
+                            <img id="cat-cover" src="cat/cover.jpg" alt="OFFER the Kitty" />
                         </div>
                         <div class="kitty-info kitty-gallery-trigger" data-gallery="kitty">
                             <h3>Kitty</h3>
@@ -313,7 +300,7 @@
                     
                     <div class="kitty-module kitty-module-2">
                         <div class="kitty-photo">
-                            <img src="life_pic/fengmian.jpg" alt="Welcome to my world" />
+                            <img id="life-cover" src="life/cover.jpg" alt="Welcome to my world" />
                         </div>
                         <div class="kitty-info kitty-gallery-trigger" data-gallery="myworld">
                             <h3>My World</h3>
@@ -337,7 +324,7 @@
 
     <!-- 页脚 -->
     <footer class="footer">
-        <p>&copy; 2024 Jade Cheng.</p>
+        <p>&copy; 2026 Jade Cheng.</p>
     </footer>
 
     <!-- 鼠标跟随星星 -->
@@ -365,32 +352,12 @@
             <span class="close" onclick="closeResumeModal()">&times;</span>
             <div id="resumeModalContent">
                 <h2 style="color: #0277bd; margin-bottom: 1.5rem; text-align: center;">Select Resume Version</h2>
-                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                    <a href="resume/Jade_Resume_DS.pdf" target="_blank" class="resume-modal-link" onclick="closeResumeModal()">
-                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: linear-gradient(135deg, #4dd0e1, #0277bd); border-radius: 12px; text-decoration: none; color: white; transition: all 0.3s ease;">
-                            <i class="fas fa-file-pdf" style="font-size: 2rem;"></i>
-                            <div style="flex: 1;">
-                                <h3 style="margin: 0 0 0.5rem 0; font-size: 1.3rem;">Data Scientist Resume</h3>
-                                <p style="margin: 0; opacity: 0.9;">Jade_Resume_DS.pdf</p>
-                            </div>
-                            <i class="fas fa-external-link-alt" style="font-size: 1.2rem;"></i>
-                        </div>
-                    </a>
-                    <a href="resume/Jade_Resume_DA.pdf" target="_blank" class="resume-modal-link" onclick="closeResumeModal()">
-                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: linear-gradient(135deg, #4dd0e1, #0277bd); border-radius: 12px; text-decoration: none; color: white; transition: all 0.3s ease;">
-                            <i class="fas fa-file-pdf" style="font-size: 2rem;"></i>
-                            <div style="flex: 1;">
-                                <h3 style="margin: 0 0 0.5rem 0; font-size: 1.3rem;">Data Analyst Resume</h3>
-                                <p style="margin: 0; opacity: 0.9;">Jade_Resume_DA.pdf</p>
-                            </div>
-                            <i class="fas fa-external-link-alt" style="font-size: 1.2rem;"></i>
-                        </div>
-                    </a>
-                </div>
+                <div id="resume-modal-list" style="display: flex; flex-direction: column; gap: 1.5rem;"></div>
             </div>
         </div>
     </div>
 
+    <script src="content.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
